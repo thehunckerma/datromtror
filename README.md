@@ -2,7 +2,7 @@
 
 ## Setup & Run:
 
-First create a user with the credentials **_java:littleknot_** and a database with the name **spring_boot**,  
+First create a user in mysql with the credentials **_java:littleknot_** and a database with the name **spring_boot**,  
 grant the user **java** permissions on the database "spring_boot".
 
 Run:  
