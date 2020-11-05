@@ -1,0 +1,17 @@
+.nav-link.active{
+    background : #3f95ff;
+    color : white;
+}
+.nav-link:hover{
+    background : #6e89a3;
+    color : white;
+}
+.nav-link{
+    color : #3f95ff;
+    background : white;
+    padding:15px;
+}
+.search{
+    border-top-left-radius:0px;
+    border-bottom-left-radius:0px;
+}

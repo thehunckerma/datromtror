@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,20 +30,41 @@ public class UserController {
     }
 
     // get user by id
-    @GetMapping("/abdennour/get/{id}")
+    @GetMapping("/abdennour/show/{id}")
     public User getUserById(@PathVariable(value = "id") long userId) {
         return this.userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + userId));
     }
 
     // create user
-    @PostMapping(value = "/abdennour/add", consumes = "application/json")
-    public User createUser(@RequestBody User user) {
+    @PostMapping(value = "/abdennour/add")
+    public User createUser(
+        @RequestParam("firstName") String firstName, 
+        @RequestParam("lastName") String lastName, 
+        @RequestParam("email") String email, 
+        @RequestParam("phone") String phone
+    ) {
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPhone(phone);
         return this.userRepository.save(user);
     }
 
     // update user
-    @PostMapping(value = "/abdennour/update/{id}", consumes = "application/json")
-    public User updateUser(@RequestBody User user, @PathVariable("id") long userId) {
+    @PostMapping(value = "/abdennour/update/{id}")
+    public User updateUser(@RequestParam("firstName") String firstName, 
+        @RequestParam("lastName") String lastName, 
+        @RequestParam("email") String email, 
+        @RequestParam("phone") String phone, 
+        @PathVariable("id") long userId
+    ) {
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPhone(phone);
+
         User existingUser = this.userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + userId));
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
