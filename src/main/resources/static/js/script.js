@@ -1,16 +1,13 @@
 function updateId(){
     var a = "/abdennour/update/" + $('#updateID').val();
-    console.log(a);
     $("#updateForm").attr("action",a);
 }
 function deleteId(){
     var a = "/abdennour/delete/" + $('#deleteID').val();
-    console.log(a);
     $("#deleteForm").attr("action",a);
 }
 function showId(){
     var a = "/abdennour/show/" + $('#showID').val();
-    console.log(a);
     $("#showForm").attr("action",a);
 }
 function homeDiv(){
@@ -26,8 +23,6 @@ function homeDiv(){
     $("#deleteNav").removeClass("active");
 }
 function showDiv(){
-    var a = "/abdennour/update/" + $('#updateID').val();
-    console.log(a);
     $("#home").hide();
     $("#show").show();
     $("#add").hide();
@@ -74,4 +69,24 @@ function deleteDiv(){
     $("#addNav").removeClass("active");
     $("#updateNav").removeClass("active");
     $("#deleteNav").addClass("active");
+}
+function last(){
+    var tab = $("#tab").val();
+    switch (tab) {
+        case "home":
+            homeDiv();
+            break;
+        case "show":
+            showDiv();
+            break;
+        case "add":
+            addDiv();
+            break;
+        case "update":
+            updateDiv();
+            break;
+        case "delete":
+            deleteDiv();
+            break;
+    }
 }
